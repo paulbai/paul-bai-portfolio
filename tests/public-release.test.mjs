@@ -10,9 +10,11 @@ test('The static release excludes legacy hosting and database artifacts', async 
   assert.equal(config.framework, null);
   assert.equal(config.outputDirectory, 'dist');
   assert.equal(config.buildCommand, 'npm run check && npm test');
-  assert.ok(
-    config.redirects.some(
-      (rule) => rule.source === '/variant-b' && rule.destination === '/' && rule.permanent
-    )
-  );
+  for (const source of ['/variant-b', '/variant-b/']) {
+    assert.ok(
+      config.redirects.some(
+        (rule) => rule.source === source && rule.destination === '/' && rule.permanent
+      )
+    );
+  }
 });

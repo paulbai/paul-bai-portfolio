@@ -4,7 +4,10 @@
   "installCommand": "npm ci",
   "buildCommand": "npm run check && npm test",
   "outputDirectory": "dist",
-  "redirects": [{ "source": "/variant-b", "destination": "/", "permanent": true }],
+  "redirects": [
+    { "source": "/variant-b", "destination": "/", "permanent": true },
+    { "source": "/variant-b/", "destination": "/", "permanent": true }
+  ],
   "headers": [
     {
       "source": "/(.*)",
