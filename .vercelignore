@@ -1,11 +1,8 @@
 # Upload only the current, reviewed portfolio application.
-*
-!src/
-!src/**
-!static/
-!static/**
-!tests/
-!tests/**
+/*
+!src
+!static
+!tests
 !package.json
 !package-lock.json
 !svelte.config.js
