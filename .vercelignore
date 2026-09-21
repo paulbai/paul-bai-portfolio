@@ -1,0 +1,15 @@
+# Upload only the current, reviewed portfolio application.
+*
+!src/
+!src/**
+!static/
+!static/**
+!tests/
+!tests/**
+!package.json
+!package-lock.json
+!svelte.config.js
+!vite.config.ts
+!tsconfig.json
+!vercel.json
+!README.md
