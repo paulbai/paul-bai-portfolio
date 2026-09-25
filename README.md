@@ -18,7 +18,7 @@ Private repository content is not published.
 
 The portfolio is served at `/`. The old `/variant-b/` address redirects to `/`,
 including on static hosting. It uses a charcoal/red editorial layout, locally hosted Satoshi and Anton,
-handwritten accents, a full-resolution portrait, scroll-driven animation,
+handwritten accents, a full-color NFT avatar, scroll-driven animation,
 an overlapping project carousel, and accessible native project dialogs.
 
 ## Stack
@@ -99,5 +99,5 @@ Local environment files, development notes, screenshots, old template files,
 database remnants, and recovery archives are excluded from this repository
 and deployment. No third-party private repository source is included.
 
-The portrait, personal branding, and project artwork are not offered under an
+The avatar, personal branding, and project artwork are not offered under an
 open-source content license. Respective project brands belong to their owners.

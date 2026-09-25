@@ -29,17 +29,23 @@ test('The portfolio keeps 21 selectable projects and accessible native dialogs',
   assert.match(html, /href="mailto:paulbaikanu13@gmail.com"/);
 });
 
-test('The portfolio uses the selected full-resolution portrait in both photo panels', () => {
+test('The portfolio uses the full-color NFT avatar in both photo panels', async () => {
   const portraits = [
-    ...html.matchAll(/<img\b[^>]*src="\/media\/variant-b\/paul-bai-4k\.jpg"[^>]*>/g)
+    ...html.matchAll(/<img\b[^>]*src="\/media\/variant-b\/paul-bai-nft\.jpg"[^>]*>/g)
   ];
   assert.equal(portraits.length, 2);
   for (const [tag] of portraits) {
-    assert.match(tag, /width="3024"/);
-    assert.match(tag, /height="4032"/);
-    assert.match(tag, /alt="Paul Bai Kanu wearing a black cap and collared shirt"/);
+    assert.match(tag, /width="500"/);
+    assert.match(tag, /height="500"/);
+    assert.match(tag, /alt="Paul Bai’s NFT avatar:/);
   }
-  assert.doesNotMatch(html, /\/media\/variant-b\/profile\.png/);
+  assert.doesNotMatch(html, /\/media\/variant-b\/(?:profile\.png|paul-bai-4k\.jpg)/);
+  const css = await readFile(new URL('../src/lib/styles/variant-b.css', import.meta.url), 'utf8');
+  for (const selector of ['.b-sidebar-photo img', '.b-menu-body > img']) {
+    const declarations = css.slice(css.indexOf(`${selector} {`)).split('}')[0];
+    assert.match(declarations, /filter:\s*none/);
+    assert.match(declarations, /object-fit:\s*contain/);
+  }
 });
 
 test('Portfolio navigation, image assets, and metadata are complete', async () => {

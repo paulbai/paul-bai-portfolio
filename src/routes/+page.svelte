@@ -275,7 +275,7 @@
               }
               const photo = q('.b-sidebar-photo')[0] as HTMLElement;
               const sx = (innerWidth * 0.11) / photo.offsetWidth,
-                sy = (innerHeight * 0.237) / photo.offsetHeight;
+                sy = sx;
               timeline.fromTo(
                 photo,
                 {
@@ -538,10 +538,10 @@
     </nav>
     <div class="b-sidebar-photo">
       <img
-        src="/media/variant-b/paul-bai-4k.jpg"
-        width="3024"
-        height="4032"
-        alt="Paul Bai Kanu wearing a black cap and collared shirt"
+        src="/media/variant-b/paul-bai-nft.jpg"
+        width="500"
+        height="500"
+        alt="Paul Bai’s NFT avatar: a gray ape in a yellow bucket hat, blue sunglasses, and red jacket, holding a GM mug"
         loading="lazy"
         decoding="async"
       /><span class="b-photo-caption">Paul Bai / 01</span>
@@ -819,10 +819,10 @@
           >{/each}
       </nav>
       <img
-        src="/media/variant-b/paul-bai-4k.jpg"
-        width="3024"
-        height="4032"
-        alt="Paul Bai Kanu wearing a black cap and collared shirt"
+        src="/media/variant-b/paul-bai-nft.jpg"
+        width="500"
+        height="500"
+        alt="Paul Bai’s NFT avatar: a gray ape in a yellow bucket hat, blue sunglasses, and red jacket, holding a GM mug"
         loading="lazy"
         decoding="async"
       /><a class="b-menu-email" href={`mailto:${email}`}>{email}<Mail size={18} /></a>
