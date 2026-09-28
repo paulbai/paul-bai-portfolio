@@ -12,7 +12,7 @@ export const projects: Project[] = [
   {
     number: '01',
     title: 'Flot',
-    phase: 'Product Manager · Major contributor',
+    phase: 'Product Manager · Current role',
     kind: 'Current work',
     image: '/media/projects/flot.webp',
     summary:
@@ -22,11 +22,11 @@ export const projects: Project[] = [
   {
     number: '02',
     title: 'Mocha',
-    phase: 'Co-founder · WhatsApp-native money movement',
+    phase: 'Co-founder and Product Manager',
     kind: 'Co-founded product',
     image: '/media/projects/mocha.webp',
     summary:
-      'A WhatsApp-native money movement experience that makes it easier to send, spend, and earn with stablecoins through conversations.',
+      'The Mocha team built a WhatsApp-native money movement product from an idea. It has processed over $2.5M.',
     website: { href: 'https://getmocha.io', label: 'getmocha.io' }
   },
   {

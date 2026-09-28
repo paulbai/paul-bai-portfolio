@@ -32,8 +32,9 @@ test('identity, proposition, roles, and contact channels survive static renderin
   assert.match(text, /I design financial products for the way Africa moves\./);
   assert.match(text, /Shaping a connected financial ecosystem/);
   assert.match(text, /Freetown, Sierra Leone/);
-  assert.match(text, /Product Manager · Major contributor/);
-  assert.match(text, /Co-founder · WhatsApp-native money movement/);
+  assert.match(text, /Product Manager · Current role/);
+  assert.match(text, /Co-founder and Product Manager · WhatsApp-native money movement/);
+  assert.match(text, /processed over \$2\.5M/);
   for (const url of [
     'mailto:paulbaikanu13@gmail.com',
     'https://github.com/paulbai',

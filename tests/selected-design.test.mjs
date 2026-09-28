@@ -13,8 +13,9 @@ test('The selected homepage preserves Paul’s content without variant labels', 
   assert.match(text, /Financial products are trust products\./);
   assert.match(text, /Technology should earn its complexity\./);
   assert.match(text, /Design is a team sport\./);
-  assert.match(text, /Product Manager · Major contributor/);
-  assert.match(text, /Co-founder · WhatsApp-native money movement/);
+  assert.match(text, /Product Manager · Current role/);
+  assert.match(text, /Co-founder and Product Manager · WhatsApp-native money movement/);
+  assert.match(text, /processed over \$2\.5M/);
   assert.doesNotMatch(text, /Daniel Kiss|500\+|1M\+|CSSDA/);
 });
 

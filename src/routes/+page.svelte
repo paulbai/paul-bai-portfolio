@@ -571,14 +571,17 @@
             >
           </h2>
           <p>
-            Currently a Product Manager at <strong>Flot</strong>, and a product builder working
-            across fintech, blockchain, and AI. I turn complex technology into useful, trusted
-            experiences people can understand and use every day.
+            I’m currently a Product Manager at <strong>Flot</strong> and co-founder and Product
+            Manager at <strong>Mocha</strong>. Our Mocha team built the product from an idea, and it
+            has processed over $2.5M. I make complex financial technology easier to understand and
+            use.
           </p>
           <div class="b-intro-stats">
             <div class="b-intro-stat"><strong>21</strong><span>Project spaces</span></div>
             <div class="b-intro-stat"><strong>Flot</strong><span>Product Manager</span></div>
-            <div class="b-intro-stat"><strong>Mocha</strong><span>Co-founder</span></div>
+            <div class="b-intro-stat">
+              <strong>Mocha</strong><span>Co-founder and Product Manager</span>
+            </div>
           </div>
         </div>
       </div>
@@ -655,15 +658,16 @@
           /><span>01 / Flot <ArrowUpRight /></span></button
         >
         <div class="b-feature-copy">
-          <p class="b-kicker">Product Manager · Major contributor</p>
+          <p class="b-kicker">Product Manager · Current role</p>
           <h3>Shaping a connected financial ecosystem for how people and businesses move money.</h3>
           <p>
             Flot brings wallets, payments, cards, WhatsApp banking, travel, business finance, and
             developer infrastructure into one connected experience.
           </p>
           <p>
-            As Product Manager, I help shape product direction across a financial ecosystem designed
-            to make everyday money movement feel simpler, faster, and more accessible.
+            As Flot’s current Product Manager, I help shape product direction across a financial
+            ecosystem designed to make everyday money movement feel simpler, faster, and more
+            accessible.
           </p>
           <a href="https://flotme.ai" target="_blank" rel="noopener noreferrer" class="b-hand"
             >Visit Flot <ArrowUpRight size={24} /></a
@@ -676,7 +680,7 @@
           <p class="b-kicker">Co-founded product / Mocha</p>
           <h3>Money movement.<br /><span class="b-accent">In a conversation.</span></h3>
           <p>{projects[1].summary}</p>
-          <p>Co-founder · WhatsApp-native money movement</p>
+          <p>Co-founder and Product Manager · WhatsApp-native money movement</p>
           <button type="button" class="b-hand" onclick={() => openProject(projects[1])}
             >Explore Mocha <ArrowUpRight size={24} /></button
           >

@@ -8,7 +8,7 @@
     ?.replace(/\/$/, '');
   const canonicalUrl = siteUrl ? `${siteUrl}/` : undefined;
   const description =
-    'Paul Bai designs websites, digital services, and financial products. Product designer, web designer, and product manager based in Freetown.';
+    'Paul Bai Kanu is Product Manager at Flot and co-founder and Product Manager at Mocha, designing financial products for the way Africa moves.';
 </script>
 
 <svelte:head>

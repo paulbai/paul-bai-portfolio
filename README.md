@@ -8,9 +8,11 @@ product manager based in Freetown, Sierra Leone.
 I design financial products for the way Africa moves, and build websites and
 digital services from focused landing pages to complex web applications.
 
-The site includes Paul’s current work at Flot, co-founded work at
-[Mocha](https://getmocha.io/), his product principles, an editorial portfolio
-layout, 11 public repositories from
+The site includes Paul’s current Product Manager work at Flot and his work as
+co-founder and Product Manager at [Mocha](https://getmocha.io/). The Mocha team
+built the product from an idea, and it has processed over $2.5M. The portfolio
+also includes his product principles, an editorial portfolio layout, 11 public
+repositories from
 [`github.com/paulbai`](https://github.com/paulbai), and 8 public collaborator
 projects. Cards open an on-site summary, not a GitHub page. Only Flot and
 Mocha have live-site links; the remaining URLs can be added when supplied.
