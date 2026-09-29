@@ -1,22 +1,23 @@
 # Paul Bai | Product Portfolio
 
-Personal portfolio for Paul Bai Kanu, a product designer, web designer, and
-product manager based in Freetown, Sierra Leone.
+Personal portfolio for Paul Bai Kanu, a product manager and Mocha co-founder
+with a background in product and web design, based in Freetown, Sierra Leone.
 
 **Live website:** [paul-bai-portfolio.vercel.app](https://paul-bai-portfolio.vercel.app)
 
-I design financial products for the way Africa moves, and build websites and
-digital services from focused landing pages to complex web applications.
+Paul is currently Product Manager at Flot. He also co-founded Mocha, where he
+works as Product Manager. His portfolio covers financial products, product
+design, and websites from focused landing pages to web applications.
 
 The site includes Paul’s current Product Manager work at Flot and his work as
 co-founder and Product Manager at [Mocha](https://getmocha.io/). The Mocha team
 built the product from an idea, and it has processed over $2.5M. The portfolio
 also includes his product principles, an editorial portfolio layout, 11 public
-repositories from
-[`github.com/paulbai`](https://github.com/paulbai), and 8 public collaborator
-projects. Cards open an on-site summary, not a GitHub page. Only Flot and
-Mocha have live-site links; the remaining URLs can be added when supplied.
-Private repository content is not published.
+repositories from [`github.com/paulbai`](https://github.com/paulbai), and 8
+public collaborator projects. Cards open an on-site summary. The 11 owned
+repositories have direct GitHub links in their summaries; Flot and Mocha link to
+their public product sites. Direct links for the eight collaborator projects
+will be added when verified. Private repository content is not published.
 
 The portfolio is served at `/`. The old `/variant-b/` address redirects to `/`,
 including on static hosting. It uses a charcoal/red editorial layout, locally hosted Satoshi and Anton,
@@ -89,9 +90,10 @@ manual navigation.
 
 ## Content and contact
 
-Live website links are currently available for Flot and Mocha. The other 19
-links will be added when those projects go live. The fuller Flot case study is
-not yet public. Some project previews are concept illustrations.
+Product website links are available for Flot and Mocha, and direct repository
+links are available for the 11 projects owned by `paulbai`. The eight public
+collaborator projects have no verified direct links yet. The fuller Flot case
+study is not yet public. Some project previews are concept illustrations.
 
 - Email: [paulbaikanu13@gmail.com](mailto:paulbaikanu13@gmail.com)
 - GitHub: [paulbai](https://github.com/paulbai)

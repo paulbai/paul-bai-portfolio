@@ -6,15 +6,15 @@ const html = await readFile(new URL('../dist/index.html', import.meta.url), 'utf
 const text = html.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ');
 
 test('The selected homepage preserves Paul’s content without variant labels', () => {
-  assert.match(html, /<title>Paul Bai \| Product Designer/);
+  assert.match(html, /<title>Paul Bai Kanu \| Product Manager/);
   assert.doesNotMatch(html, /href="\/variant-b\/?"|noindex/);
-  assert.match(text, /I design financial products for the way Africa moves\./);
+  assert.match(text, /I lead financial products for the way Africa moves\./);
   assert.match(text, /complex engineering and infrastructure projects/);
   assert.match(text, /Financial products are trust products\./);
   assert.match(text, /Technology should earn its complexity\./);
   assert.match(text, /Design is a team sport\./);
   assert.match(text, /Product Manager · Current role/);
-  assert.match(text, /Co-founder and Product Manager · WhatsApp-native money movement/);
+  assert.match(text, /Co-founder and Product Manager · Sierra Leone/);
   assert.match(text, /processed over \$2\.5M/);
   assert.doesNotMatch(text, /Daniel Kiss|500\+|1M\+|CSSDA/);
 });

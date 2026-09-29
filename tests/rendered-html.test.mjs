@@ -29,11 +29,11 @@ const expectedProjects = [
 ];
 
 test('identity, proposition, roles, and contact channels survive static rendering', () => {
-  assert.match(text, /I design financial products for the way Africa moves\./);
-  assert.match(text, /Shaping a connected financial ecosystem/);
+  assert.match(text, /I lead financial products for the way Africa moves\./);
+  assert.match(text, /Making everyday money movement easier across one connected platform/);
   assert.match(text, /Freetown, Sierra Leone/);
   assert.match(text, /Product Manager · Current role/);
-  assert.match(text, /Co-founder and Product Manager · WhatsApp-native money movement/);
+  assert.match(text, /Co-founder and Product Manager · Sierra Leone/);
   assert.match(text, /processed over \$2\.5M/);
   for (const url of [
     'mailto:paulbaikanu13@gmail.com',

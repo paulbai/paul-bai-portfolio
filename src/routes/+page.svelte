@@ -36,26 +36,26 @@
     ['05', 'Contact', '#contact-b']
   ];
   const focusAreas = [
-    ['Product strategy', 'Fintech · Blockchain · AI'],
-    ['Customer experience', 'Financial access · Trust · Clarity'],
-    ['Financial-product systems', 'Wallets · Payments · Connected experiences'],
-    ['Cross-functional delivery', 'Strategy · Design · Engineering · Compliance']
+    ['Customer insight', 'Adoption barriers · Trust · Everyday money movement'],
+    ['Product direction', 'Discovery · Prioritization · Launch'],
+    ['Financial journeys', 'Mobile money · Wallets · Cash-in and cash-out'],
+    ['Cross-functional delivery', 'Design · Engineering · Compliance · Business']
   ];
   const principles = [
     {
       word: 'Clarity',
       title: 'Technology should earn its complexity.',
-      body: 'Blockchain and AI are valuable when they remove friction, create trust, or open access, not when they are added for novelty.'
+      body: 'A faster transfer means little if people cannot understand how to use it or why they should trust it. I start with the job the customer needs done.'
     },
     {
       word: 'Trust',
       title: 'Financial products are trust products.',
-      body: 'Every flow should make people feel informed, in control, and secure.'
+      body: 'The path into and out of digital money matters as much as the transfer itself. Cash access, clear steps, and confidence shape whether people adopt a product.'
     },
     {
       word: 'Together',
       title: 'Design is a team sport.',
-      body: 'The strongest products emerge when strategy, design, engineering, compliance, and business move in the same direction.'
+      body: 'Good product decisions connect customer evidence with what design, engineering, compliance, and business can deliver together.'
     }
   ];
   let root: HTMLDivElement;
@@ -497,7 +497,7 @@
   </div>
 
   <header class="b-mobile-header">
-    <a href="#introduce" onclick={(e) => navigate(e, '#introduce')}>Design / Product / Fintech</a>
+    <a href="#introduce" onclick={(e) => navigate(e, '#introduce')}>Product / Design / Fintech</a>
     <button
       type="button"
       bind:this={menuButton}
@@ -515,7 +515,7 @@
       <h1 class="b-name">Paul <span>Bai</span></h1>
       <Brush class="b-name-brush" />
     </div>
-    <p class="b-sidebar-tag">Design / Product / <span>Fintech</span></p>
+    <p class="b-sidebar-tag">Product / Design / <span>Fintech</span></p>
     <div class="b-side-social">
       <a href={linkedin} target="_blank" rel="noopener noreferrer"
         >LinkedIn <ArrowUpRight size={13} /></a
@@ -524,7 +524,7 @@
       >
     </div>
     <div class="b-sidebar-bio">
-      <p>Product Designer &amp; Product Manager<br />Fintech, blockchain, and AI.</p>
+      <p>Product Manager at Flot<br />Co-founder and PM at Mocha.</p>
       <p class="b-locale">
         <span><MapPin size={12} /> Freetown</span><span><Globe size={12} /> Working remotely</span>
       </p>
@@ -553,7 +553,7 @@
     <section id="introduce" class="b-intro-scene" aria-label="Introduction" tabindex="-1">
       <div class="b-intro-stage">
         <p class="b-opening-index">Index / Portfolio / 2026</p>
-        <p class="b-opening-note"><ArrowDownLeft /> I design for the way Africa moves.</p>
+        <p class="b-opening-note"><ArrowDownLeft /> Flot PM. Mocha cofounder.</p>
         <a href="#about-b" class="b-keep-going" onclick={(e) => navigate(e, '#about-b')}
           ><ArrowDown /> Keep exploring</a
         >
@@ -566,15 +566,15 @@
         </div>
         <div class="b-intro-copy">
           <h2>
-            I design financial<br />products for the<br /><span class="b-accent b-underlined"
+            I lead financial<br />products for the<br /><span class="b-accent b-underlined"
               >way Africa moves.<Brush /></span
             >
           </h2>
           <p>
-            I’m currently a Product Manager at <strong>Flot</strong> and co-founder and Product
-            Manager at <strong>Mocha</strong>. Our Mocha team built the product from an idea, and it
-            has processed over $2.5M. I make complex financial technology easier to understand and
-            use.
+            I’m Product Manager at <strong>Flot</strong> and co-founder and Product Manager at
+            <strong>Mocha</strong>. Our team built Mocha from an idea into a WhatsApp-based money
+            product that has processed over $2.5M. I work where customer trust, financial access,
+            and product delivery meet.
           </p>
           <div class="b-intro-stats">
             <div class="b-intro-stat"><strong>21</strong><span>Project spaces</span></div>
@@ -591,24 +591,24 @@
       <div class="b-about-intro" data-b-reveal>
         <h2 id="b-about-title">A little <span class="b-accent">about me.</span></h2>
         <p>
-          I’m Paul, a product designer, web designer, and product manager working at the
-          intersection of financial access, emerging technology, and human behaviour.
+          I’m Paul Bai Kanu. My path into product spans design, web development, and earlier work on
+          complex engineering and infrastructure projects. Those experiences taught me to ask how an
+          ambitious idea will work for people within real-world constraints.
         </p>
         <p>
-          I design and build websites and digital services, from focused landing pages and business
-          websites to complex web applications. I bring product strategy, thoughtful design, and
-          hands-on development together to take ideas from the first conversation to a working
-          product, with clear user journeys and the foundations to grow.
+          My work now centers on financial access. Mocha lets people add funds with mobile money,
+          bank transfer, or crypto; send USDC through WhatsApp; and cash out to Leones. At Flot, I
+          work across a broader connected finance ecosystem.
         </p>
         <p>
-          My work is grounded in fintech, but my curiosity extends into blockchain, AI, and the
-          technologies reshaping how people transact, save, learn, and build. I’m interested in new
-          technology only when it creates a clearer, more useful experience for real people.
+          In early 2025, a remittance client stayed with an older method despite delays and charges.
+          That is the kind of adoption barrier I examine in my writing on trust, liquidity, and
+          cash-in and cash-out: the experience has to work in the real world, not only on screen.
         </p>
         <p>
-          Before product, I worked on complex engineering and infrastructure projects. That
-          background gave me systems thinking, a respect for real-world constraints, and a bias for
-          turning ambitious ideas into things that work.
+          I still design and build digital services, from focused landing pages and business
+          websites to complex web applications. I like working with teams from the first
+          conversation to a working product, where strategy and delivery stay connected.
         </p>
       </div>
       <div class="b-focus-list">
@@ -629,8 +629,8 @@
         <div>
           <h3>21 <span class="b-accent">project spaces.</span></h3>
           <p>
-            Current work, co-founded products, public GitHub repositories, and public
-            collaborations, with more case studies to follow.
+            Flot and Mocha anchor my product work. The archive also includes public code you can
+            inspect, plus website collaborations and experiments.
           </p>
         </div>
       </div>
@@ -659,15 +659,15 @@
         >
         <div class="b-feature-copy">
           <p class="b-kicker">Product Manager · Current role</p>
-          <h3>Shaping a connected financial ecosystem for how people and businesses move money.</h3>
+          <h3>Making everyday money movement easier across one connected platform.</h3>
           <p>
-            Flot brings wallets, payments, cards, WhatsApp banking, travel, business finance, and
-            developer infrastructure into one connected experience.
+            Flot connects wallets, payments, cards, and WhatsApp banking with services for
+            businesses and developers. The product challenge is to make those connections useful in
+            everyday money decisions.
           </p>
           <p>
-            As Flot’s current Product Manager, I help shape product direction across a financial
-            ecosystem designed to make everyday money movement feel simpler, faster, and more
-            accessible.
+            As Flot’s current Product Manager, I focus on how customer journeys connect across the
+            ecosystem and where the team can make them clearer.
           </p>
           <a href="https://flotme.ai" target="_blank" rel="noopener noreferrer" class="b-hand"
             >Visit Flot <ArrowUpRight size={24} /></a
@@ -680,7 +680,7 @@
           <p class="b-kicker">Co-founded product / Mocha</p>
           <h3>Money movement.<br /><span class="b-accent">In a conversation.</span></h3>
           <p>{projects[1].summary}</p>
-          <p>Co-founder and Product Manager · WhatsApp-native money movement</p>
+          <p>Co-founder and Product Manager · Sierra Leone</p>
           <button type="button" class="b-hand" onclick={() => openProject(projects[1])}
             >Explore Mocha <ArrowUpRight size={24} /></button
           >
@@ -699,8 +699,11 @@
           /><span>02 / Mocha <ArrowUpRight /></span></button
         >
       </div>
-      <a class="b-experience-link b-hand" href={github} target="_blank" rel="noopener noreferrer"
-        >See what I’m building <ArrowUpRight size={24} /></a
+      <a
+        class="b-experience-link b-hand"
+        href="https://www.linkedin.com/pulse/your-startup-vitamin-painkiller-paul-bai-kanu-huh8f"
+        target="_blank"
+        rel="noopener noreferrer">Read my thinking on adoption <ArrowUpRight size={24} /></a
       >
     </section>
 
@@ -758,7 +761,7 @@
           aria-label={copied ? 'Copied. Let’s talk!' : `Copy ${email}`}
           >{copied ? 'Copied. Let’s talk!' : email}<Copy size={17} /></button
         ><a class="b-email-send" href={`mailto:${email}`}
-          >Email me about working together <ArrowUpRight size={16} /></a
+          >Email me about product work <ArrowUpRight size={16} /></a
         >
         <div class="b-footer-social">
           <a href={github} target="_blank" rel="noopener noreferrer">GitHub</a><a
@@ -815,7 +818,7 @@
           >GitHub <ArrowUpRight size={16} /></a
         >
       </div>
-      <p>Product Designer &amp; Product Manager<br />Fintech, blockchain, and AI.</p>
+      <p>Product Manager at Flot<br />Co-founder and PM at Mocha.</p>
       <p class="b-locale"><MapPin size={12} /> Freetown, Sierra Leone · Working remotely</p>
       <nav aria-label="Mobile navigation">
         {#each navigation as [num, label, href]}<a {href} onclick={(e) => navigate(e, href)}
@@ -870,7 +873,7 @@
             href={project.website.href}
             target="_blank"
             rel="noopener noreferrer">Visit {project.website.label} <ArrowUpRight size={23} /></a
-          >{:else}<p class="b-not-live">Live website link coming later.</p>{/if}
+          >{:else}<p class="b-not-live">A direct project link is not available yet.</p>{/if}
       </div>
     </div>
   </dialog>

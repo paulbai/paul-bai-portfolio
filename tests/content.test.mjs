@@ -5,13 +5,18 @@ import test from 'node:test';
 const forbiddenDash = /\u2014|&mdash;|&#0*8212;|&#x0*2014;|\\u2014/i;
 
 for (const route of ['index.html']) {
-  test(`${route} has no em dashes and describes Paul's web design work`, async () => {
+  test(`${route} has no em dashes and explains Paul's product work`, async () => {
     const html = await readFile(new URL(`../dist/${route}`, import.meta.url), 'utf8');
     assert.doesNotMatch(html, forbiddenDash);
     const about = html.match(/<section\b[^>]*id="about(?:-b)?"[^>]*>([\s\S]*?)<\/section>/)?.[1];
     assert.ok(about, 'About section exists in the rendered HTML');
     const copy = about.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
-    assert.match(copy, /product designer, web designer, and product manager/);
+    assert.match(copy, /My path into product spans design, web development/);
+    assert.match(copy, /Mocha lets people add funds with mobile money/);
+    assert.match(
+      copy,
+      /a remittance client stayed with an older method despite delays and charges/
+    );
     assert.match(
       copy,
       /from focused landing pages and business websites to complex web applications/

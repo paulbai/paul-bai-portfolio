@@ -16,7 +16,7 @@ export const projects: Project[] = [
     kind: 'Current work',
     image: '/media/projects/flot.webp',
     summary:
-      'A connected financial ecosystem bringing wallets, payments, cards, WhatsApp banking, travel, business finance, and developer infrastructure into one experience.',
+      'I am Product Manager at Flot, a Sierra Leonean financial ecosystem connecting personal wallets, WhatsApp banking, cards, business finance, and developer payments.',
     website: { href: 'https://flotme.ai', label: 'flotme.ai' }
   },
   {
@@ -26,7 +26,7 @@ export const projects: Project[] = [
     kind: 'Co-founded product',
     image: '/media/projects/mocha.webp',
     summary:
-      'The Mocha team built a WhatsApp-native money movement product from an idea. It has processed over $2.5M.',
+      'As co-founder and Product Manager, I helped build Mocha from idea into a WhatsApp-based way to deposit, send USDC, and withdraw to leones. The team has processed over $2.5M through the product.',
     website: { href: 'https://getmocha.io', label: 'getmocha.io' }
   },
   {
@@ -36,7 +36,8 @@ export const projects: Project[] = [
     kind: 'GitHub',
     image: '/media/projects/lightpath-concept.avif',
     summary:
-      'A citation-led, no-login study companion that turns Scripture, Adventist doctrine, and the church calendar into grounded answers for people in Sierra Leone and West Africa.'
+      'A citation-led, no-login study companion that turns Scripture, Adventist doctrine, and the church calendar into grounded answers for people in Sierra Leone and West Africa.',
+    website: { href: 'https://github.com/paulbai/lightpathsda', label: 'GitHub repository' }
   },
   {
     number: '04',
@@ -44,7 +45,9 @@ export const projects: Project[] = [
     phase: 'Public repository · TypeScript',
     kind: 'GitHub',
     image: '/media/projects/taskflow-concept.avif',
-    summary: 'A collaborative to-do workspace for turning shared tasks into a clear, workable list.'
+    summary:
+      'A collaborative to-do workspace for turning shared tasks into a clear, workable list.',
+    website: { href: 'https://github.com/paulbai/taskflow', label: 'GitHub repository' }
   },
   {
     number: '05',
@@ -53,7 +56,8 @@ export const projects: Project[] = [
     kind: 'GitHub',
     image: '/media/projects/attendlog-concept.avif',
     summary:
-      'A lightweight attendance-log interface being shaped as a React project for recording attendance with less friction.'
+      'A lightweight attendance-log interface being shaped as a React project for recording attendance with less friction.',
+    website: { href: 'https://github.com/paulbai/attendlog-site', label: 'GitHub repository' }
   },
   {
     number: '06',
@@ -62,7 +66,8 @@ export const projects: Project[] = [
     kind: 'GitHub',
     image: '/media/projects/yans-fitness-concept.avif',
     summary:
-      'The public archive for a Yans Fitness experience, currently held as an early-stage project space.'
+      'The public archive for a Yans Fitness experience, currently held as an early-stage project space.',
+    website: { href: 'https://github.com/paulbai/yansfitness', label: 'GitHub repository' }
   },
   {
     number: '07',
@@ -71,7 +76,11 @@ export const projects: Project[] = [
     kind: 'GitHub',
     image: '/media/projects/ss-wears-concept.avif',
     summary:
-      'A focused storefront landing page for SS Wears, built as a clean entry point for a fashion brand.'
+      'A focused storefront landing page for SS Wears, built as a clean entry point for a fashion brand.',
+    website: {
+      href: 'https://github.com/paulbai/ss-wears-landing-page',
+      label: 'GitHub repository'
+    }
   },
   {
     number: '08',
@@ -80,7 +89,8 @@ export const projects: Project[] = [
     kind: 'GitHub',
     image: '/media/projects/phae-task-manager.webp',
     summary:
-      'An offline-capable collaborative task manager with shared lists, priorities, notes, a calendar view, Pomodoro sessions, and optional AI subtask suggestions.'
+      'An offline-capable collaborative task manager with shared lists, priorities, notes, a calendar view, Pomodoro sessions, and optional AI subtask suggestions.',
+    website: { href: 'https://github.com/paulbai/phae-task-manager', label: 'GitHub repository' }
   },
   {
     number: '09',
@@ -89,7 +99,8 @@ export const projects: Project[] = [
     kind: 'GitHub',
     image: '/media/projects/expense-concept.webp',
     summary:
-      'A private-by-default, local-first tracker that turns everyday expenses into clear category, trend, and streak views without requiring an account.'
+      'A private-by-default, local-first tracker that turns everyday expenses into clear category, trend, and streak views without requiring an account.',
+    website: { href: 'https://github.com/paulbai/expense-tracker', label: 'GitHub repository' }
   },
   {
     number: '10',
@@ -98,7 +109,8 @@ export const projects: Project[] = [
     kind: 'GitHub',
     image: '/media/projects/voting-platform-concept.avif',
     summary:
-      'An early voting-platform project space, kept intentionally lean while its public build takes shape.'
+      'An early voting-platform project space, kept intentionally lean while its public build takes shape.',
+    website: { href: 'https://github.com/paulbai/voting-platform', label: 'GitHub repository' }
   },
   {
     number: '11',
@@ -107,7 +119,11 @@ export const projects: Project[] = [
     kind: 'GitHub',
     image: '/media/projects/basketball-scoreboard-concept.avif',
     summary:
-      'A focused basketball scoreboard prototype for keeping the game’s score visible at a glance.'
+      'A focused basketball scoreboard prototype for keeping the game’s score visible at a glance.',
+    website: {
+      href: 'https://github.com/paulbai/basketball-scoreboard',
+      label: 'GitHub repository'
+    }
   },
   {
     number: '12',
@@ -116,7 +132,8 @@ export const projects: Project[] = [
     kind: 'GitHub',
     image: '/media/projects/calculator-concept.avif',
     summary:
-      'A compact calculator prototype that distils essential arithmetic into a single, tactile interface.'
+      'A compact calculator prototype that distils essential arithmetic into a single, tactile interface.',
+    website: { href: 'https://github.com/paulbai/calculator-project', label: 'GitHub repository' }
   },
   {
     number: '13',
@@ -125,7 +142,8 @@ export const projects: Project[] = [
     kind: 'GitHub',
     image: '/media/projects/passenger-counter-concept.avif',
     summary:
-      'A simple passenger-counting interface that turns a repeated everyday count into one clear, live number.'
+      'A simple passenger-counting interface that turns a repeated everyday count into one clear, live number.',
+    website: { href: 'https://github.com/paulbai/Passenger-counter', label: 'GitHub repository' }
   },
   {
     number: '14',
