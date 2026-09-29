@@ -629,8 +629,8 @@
         <div>
           <h3>21 <span class="b-accent">project spaces.</span></h3>
           <p>
-            Flot and Mocha anchor my product work. The archive also includes public code you can
-            inspect, plus website collaborations and experiments.
+            Flot and Mocha anchor my product work. The archive also includes code projects, website
+            collaborations, and experiments.
           </p>
         </div>
       </div>
@@ -873,7 +873,7 @@
             href={project.website.href}
             target="_blank"
             rel="noopener noreferrer">Visit {project.website.label} <ArrowUpRight size={23} /></a
-          >{:else}<p class="b-not-live">A direct project link is not available yet.</p>{/if}
+          >{/if}
       </div>
     </div>
   </dialog>

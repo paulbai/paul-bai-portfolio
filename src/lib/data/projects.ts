@@ -32,189 +32,172 @@ export const projects: Project[] = [
   {
     number: '03',
     title: 'LightPath SDA',
-    phase: 'Scripture-grounded answers and offline Bible companion',
-    kind: 'GitHub',
+    phase: 'Adventist study companion · early build',
+    kind: 'Study product',
     image: '/media/projects/lightpath-concept.avif',
     summary:
-      'A citation-led, no-login study companion that turns Scripture, Adventist doctrine, and the church calendar into grounded answers for people in Sierra Leone and West Africa.',
-    website: { href: 'https://github.com/paulbai/lightpathsda', label: 'GitHub repository' }
+      'LightPath SDA is a no-login study companion for Adventist users in Sierra Leone and West Africa. The current app combines citation-led answers, a Bible reader with offline support, and a church calendar. Its local question-answering demo uses a small public-domain source set; broader source coverage is still pending licensing.'
   },
   {
     number: '04',
     title: 'Taskflow',
-    phase: 'Public repository · TypeScript',
-    kind: 'GitHub',
+    phase: 'Personal tasks and shared workspaces',
+    kind: 'Workspace app',
     image: '/media/projects/taskflow-concept.avif',
     summary:
-      'A collaborative to-do workspace for turning shared tasks into a clear, workable list.',
-    website: { href: 'https://github.com/paulbai/taskflow', label: 'GitHub repository' }
+      'Taskflow brings personal tasks and shared workspaces together. Invite codes support collaboration, while boards track work through To Do, In Progress, and Done; task details include dates, assignees, and subtasks. The code also includes databases with table, board, gallery, list, and calendar views.'
   },
   {
     number: '05',
     title: 'Attendlog',
-    phase: 'Public repository · JavaScript',
-    kind: 'GitHub',
+    phase: 'Attendance product concept and waitlist',
+    kind: 'Concept site',
     image: '/media/projects/attendlog-concept.avif',
     summary:
-      'A lightweight attendance-log interface being shaped as a React project for recording attendance with less friction.',
-    website: { href: 'https://github.com/paulbai/attendlog-site', label: 'GitHub repository' }
+      'Attendlog is a concept and waitlist site for an attendance product aimed at Sierra Leonean businesses. The page explains planned location-verified clock-ins, offline sync, and tamper-resistant records, and lets visitors join a waitlist. The repository contains the promotional site and signup endpoint, not a working attendance-tracking app.'
   },
   {
     number: '06',
     title: 'Yans Fitness',
-    phase: 'Public repository',
-    kind: 'GitHub',
+    phase: 'Early fitness concept',
+    kind: 'Concept',
     image: '/media/projects/yans-fitness-concept.avif',
     summary:
-      'The public archive for a Yans Fitness experience, currently held as an early-stage project space.',
-    website: { href: 'https://github.com/paulbai/yansfitness', label: 'GitHub repository' }
+      'Yans Fitness is an early concept in the archive. No implementation or project documentation is available in the public repository yet, so this card is a visual preview rather than a working product.'
   },
   {
     number: '07',
     title: 'SS Wears',
-    phase: 'Public repository · JavaScript',
-    kind: 'GitHub',
+    phase: 'Fashion brand landing page',
+    kind: 'Website',
     image: '/media/projects/ss-wears-concept.avif',
     summary:
-      'A focused storefront landing page for SS Wears, built as a clean entry point for a fashion brand.',
-    website: {
-      href: 'https://github.com/paulbai/ss-wears-landing-page',
-      label: 'GitHub repository'
-    }
+      'A React landing page for SS Wears that introduces the fashion brand through an animated hero and galleries for clothing, bags, and hair. Location and contact details sit alongside WhatsApp ordering, so customers move from browsing to a conversation rather than an on-site checkout.'
   },
   {
     number: '08',
     title: 'Phae Task Manager',
-    phase: 'Public repository · TypeScript',
-    kind: 'GitHub',
+    phase: 'Task-management prototype',
+    kind: 'Prototype',
     image: '/media/projects/phae-task-manager.webp',
     summary:
-      'An offline-capable collaborative task manager with shared lists, priorities, notes, a calendar view, Pomodoro sessions, and optional AI subtask suggestions.',
-    website: { href: 'https://github.com/paulbai/phae-task-manager', label: 'GitHub repository' }
+      'Phae is a task-management prototype with personal lists, priorities, subtasks, a calendar view, dark mode, and a Pomodoro timer. It explores shared-list invitations and optional AI subtask suggestions. The current code keeps tasks in session state and simulates invitations; persistent collaboration and offline task syncing are not implemented.'
   },
   {
     number: '09',
     title: 'Expense Tracker',
-    phase: 'Public repository · JavaScript',
-    kind: 'GitHub',
+    phase: 'Local-first expense tracker',
+    kind: 'Web app',
     image: '/media/projects/expense-concept.webp',
     summary:
-      'A private-by-default, local-first tracker that turns everyday expenses into clear category, trend, and streak views without requiring an account.',
-    website: { href: 'https://github.com/paulbai/expense-tracker', label: 'GitHub repository' }
+      'A browser-based expense tracker for logging amounts, categories, dates, and notes without an account. It stores records locally and turns them into monthly and weekly totals, category and trend charts, a searchable expense list, and logging streaks.'
   },
   {
     number: '10',
     title: 'Voting Platform',
-    phase: 'Public repository',
-    kind: 'GitHub',
+    phase: 'Early voting concept',
+    kind: 'Concept',
     image: '/media/projects/voting-platform-concept.avif',
     summary:
-      'An early voting-platform project space, kept intentionally lean while its public build takes shape.',
-    website: { href: 'https://github.com/paulbai/voting-platform', label: 'GitHub repository' }
+      'An early voting-platform concept. The public repository has no application code or README yet, so its features and outcomes are not documented.'
   },
   {
     number: '11',
     title: 'Basketball Scoreboard',
-    phase: 'Public repository · CSS',
-    kind: 'GitHub',
+    phase: 'HTML · CSS · JavaScript',
+    kind: 'Prototype',
     image: '/media/projects/basketball-scoreboard-concept.avif',
     summary:
-      'A focused basketball scoreboard prototype for keeping the game’s score visible at a glance.',
-    website: {
-      href: 'https://github.com/paulbai/basketball-scoreboard',
-      label: 'GitHub repository'
-    }
+      'A browser-based basketball scoreboard for two teams, with large digital-style totals that are easy to read at a glance. Each side has one-, two-, and three-point controls, and a reset button clears both scores. Built as a focused HTML, CSS, and JavaScript prototype.'
   },
   {
     number: '12',
     title: 'Calculator',
-    phase: 'Public repository · HTML',
-    kind: 'GitHub',
+    phase: 'HTML · CSS · JavaScript',
+    kind: 'Prototype',
     image: '/media/projects/calculator-concept.avif',
     summary:
-      'A compact calculator prototype that distils essential arithmetic into a single, tactile interface.',
-    website: { href: 'https://github.com/paulbai/calculator-project', label: 'GitHub repository' }
+      'A compact calculator interface exercise with a number pad, decimal input, four arithmetic operators, equals, and clear controls. The repository contains JavaScript for evaluating and saving expressions, but the checked-in page still needs its stylesheet and script paths corrected before it works as a standalone demo.'
   },
   {
     number: '13',
     title: 'Passenger Counter',
-    phase: 'Passenger counter app · HTML, CSS and JavaScript',
-    kind: 'GitHub',
+    phase: 'HTML · CSS · JavaScript',
+    kind: 'Prototype',
     image: '/media/projects/passenger-counter-concept.avif',
     summary:
-      'A simple passenger-counting interface that turns a repeated everyday count into one clear, live number.',
-    website: { href: 'https://github.com/paulbai/Passenger-counter', label: 'GitHub repository' }
+      'A simple passenger-counting page with a live total and one-tap increment. Saving a count adds it to a visible history line and resets the active tally for the next group. The history lasts only for the current page session.'
   },
   {
     number: '14',
     title: 'Flot Business',
-    phase: 'Public product collaboration',
-    kind: 'GitHub collaboration',
+    phase: 'Business website collaboration',
+    kind: 'Website collaboration',
     image: '/media/projects/flot-business.webp',
     summary:
-      'A business-facing Flot product collaboration, built as a Svelte web experience for the wider financial ecosystem.'
+      'A Svelte marketing site for Flot’s business offering. It explains merchant onboarding, payment channels, and settlement through a four-step interactive section, and introduces the mobile app, flight benefits, and download options. The repository contains the presentation website rather than the payment or flight-booking systems.'
   },
   {
     number: '15',
     title: 'Flot Platform',
-    phase: 'Public product collaboration',
-    kind: 'GitHub collaboration',
+    phase: 'Commerce prototype collaboration',
+    kind: 'Product collaboration',
     image: '/media/projects/flot-platform.webp',
     summary:
-      'A multi-vertical commerce showcase connecting hotel, restaurant, travel, and store flows through one white-label Flot checkout with dual USD and Le pricing.'
+      'A multi-vertical commerce prototype that brings hotel stays, restaurant ordering, travel, and a fashion and art store under one Flot-branded experience. Each flow leads into a shared checkout interface with USD and leone pricing. Payments in this showcase are simulated, so it demonstrates the journey rather than processing real charges.'
   },
   {
     number: '16',
     title: 'Flot Website Dashboard',
-    phase: 'Public product collaboration',
-    kind: 'GitHub collaboration',
+    phase: 'Merchant dashboard collaboration',
+    kind: 'Product collaboration',
     image: '/media/projects/flot-dashboard.webp',
     summary:
-      'A public Flot dashboard collaboration built with Next.js, providing an early interface layer for the connected product ecosystem.'
+      'A merchant workspace connecting Flot payments with the websites that take orders. Merchants can review transactions and order status, edit site content and products, and see website analytics; public APIs make that data available to merchant sites. The repository is a shared product collaboration.'
   },
   {
     number: '17',
     title: 'Belvoir Hotel',
-    phase: 'Public website collaboration',
-    kind: 'GitHub collaboration',
+    phase: 'Hotel website collaboration',
+    kind: 'Website collaboration',
     image: '/media/projects/belvoir-hotel.webp',
     summary:
-      'An editorial digital front door for Belvoir Hotel & Furnished Residence in Freetown, presenting a luxury stay with clarity and restraint.'
+      'An editorial hotel site for rooms and serviced apartments in Freetown, with individual room pages and a direct booking journey. Guests can check room availability, submit booking details, and receive a Flot payment link; a separate admin interface supports reservation operations. The work is presented as a website collaboration.'
   },
   {
     number: '18',
     title: 'Bondumani',
     phase: 'Public website collaboration',
-    kind: 'GitHub collaboration',
+    kind: 'Website collaboration',
     image: '/media/projects/bondumani.webp',
     summary:
-      'A dual-world digital gateway for Bondumani Art & Resort, pairing a Freetown hospitality narrative with cinematic motion and responsive editorial layouts.'
+      'A public website collaboration for Bondumani Art & Resort in Freetown. A motion-led gateway gives visitors separate paths into the art studio and bamboo village. The art page includes a marketplace and cart, while the resort page lets visitors explore stays and begin a booking flow.'
   },
   {
     number: '19',
     title: 'Bridges of Hope',
     phase: 'Public website collaboration',
-    kind: 'GitHub collaboration',
+    kind: 'Website collaboration',
     image: '/media/projects/bridges-of-hope.webp',
     summary:
-      'A public website collaboration for Bridges of Hope, delivered as a responsive Next.js experience.'
+      'A public website collaboration for a Sierra Leone humanitarian initiative, built in Next.js. Program profiles load from Sanity and open into detailed cause views. Visitors can choose a donation amount and reach a Flot checkout interface.'
   },
   {
     number: '20',
     title: 'Dove Group',
     phase: 'Public website collaboration',
-    kind: 'GitHub collaboration',
+    kind: 'Website collaboration',
     image: '/media/projects/dove-group.webp',
     summary:
-      'A Sierra Leonean group-of-companies website that brings its marketplace into a connected Flot checkout experience.'
+      'A public website collaboration for Dove Group of Companies, presenting its subsidiaries and products in one place. The marketplace includes search, category filters, sorting, quantity controls, and a cart. Its checkout flow captures an order and opens Flot’s hosted payment interface.'
   },
   {
     number: '21',
     title: 'Sierra 247',
     phase: 'Public website collaboration',
-    kind: 'GitHub collaboration',
+    kind: 'Website collaboration',
     image: '/media/projects/sierra-247.webp',
     summary:
-      'A professional web presence for Sierra 24/7 Securicor and Logistics Services, designed to make a security business feel clear and credible.'
+      'A public website collaboration for Sierra 24/7 Securicor and Logistics Services. Visitors can explore service details, browse company information, and reach contact and careers paths. The site includes a careers submission form and a payment overlay connected to Flot.'
   }
 ];

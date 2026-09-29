@@ -15,9 +15,9 @@ built the product from an idea, and it has processed over $2.5M. The portfolio
 also includes his product principles, an editorial portfolio layout, 11 public
 repositories from [`github.com/paulbai`](https://github.com/paulbai), and 8
 public collaborator projects. Cards open an on-site summary. The 11 owned
-repositories have direct GitHub links in their summaries; Flot and Mocha link to
-their public product sites. Direct links for the eight collaborator projects
-will be added when verified. Private repository content is not published.
+repository cards and eight collaborator cards summarize substantive READMEs or
+the implemented code without linking out to GitHub. Flot and Mocha retain
+their public product-site links. Private repository content is not published.
 
 The portfolio is served at `/`. The old `/variant-b/` address redirects to `/`,
 including on static hosting. It uses a charcoal/red editorial layout, locally hosted Satoshi and Anton,
@@ -90,10 +90,11 @@ manual navigation.
 
 ## Content and contact
 
-Product website links are available for Flot and Mocha, and direct repository
-links are available for the 11 projects owned by `paulbai`. The eight public
-collaborator projects have no verified direct links yet. The fuller Flot case
-study is not yet public. Some project previews are concept illustrations.
+Product website links are available for Flot and Mocha. The other project
+dialogs stay on-site and describe what their READMEs or code support. Yans
+Fitness and Voting Platform have empty public repositories, so their cards are
+labeled as concepts. The fuller Flot case study is not yet public. Some project
+previews are concept illustrations.
 
 - Email: [paulbaikanu13@gmail.com](mailto:paulbaikanu13@gmail.com)
 - GitHub: [paulbai](https://github.com/paulbai)
