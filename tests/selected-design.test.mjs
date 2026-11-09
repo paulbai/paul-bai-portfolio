@@ -14,8 +14,11 @@ test('The selected homepage preserves Paul’s content without variant labels', 
   assert.match(text, /Technology should earn its complexity\./);
   assert.match(text, /Design is a team sport\./);
   assert.match(text, /Product Manager · Current role/);
-  assert.match(text, /Co-founder and Product Manager · Sierra Leone/);
-  assert.match(text, /processed over \$2\.5M/);
+  assert.match(text, /Co-founder and product lead/);
+  assert.match(
+    text,
+    /processed over \$2\.5M across remittance, cards, US-stock access, and OTC from May 2024 to June 2025/
+  );
   assert.doesNotMatch(text, /Daniel Kiss|500\+|1M\+|CSSDA/);
 });
 

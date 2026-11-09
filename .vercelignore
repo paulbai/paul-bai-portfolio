@@ -3,8 +3,10 @@
 !src
 !static
 !tests
+!scripts
 !package.json
 !package-lock.json
+!playwright.browser.config.ts
 !svelte.config.js
 !vite.config.ts
 !tsconfig.json

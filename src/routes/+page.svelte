@@ -62,6 +62,7 @@
   let menuDialog: HTMLDialogElement;
   let projectDialog: HTMLDialogElement;
   let menuButton: HTMLButtonElement;
+  let menuNavigationTarget: HTMLElement | null = null;
   let lastTrigger: HTMLElement | null = null;
   let project = $state<Project>(projects[0]);
   let dialogOpen = $state(false);
@@ -69,14 +70,19 @@
   let reduced = $state(false);
   let stopped = $state(false);
   let ready = $state(false);
+  let introLinksAvailable = $state(true);
+  let sidebarEmailAvailable = $state(true);
+  let sidebarLinksAvailable = $state(true);
   let activeSection = $state('#introduce');
   let progress = $state(0);
   let pointer = $state({ x: 0, y: 0 });
   let copied = $state(false);
   let copyMessage = $state('');
   let copyTimer: ReturnType<typeof setTimeout>;
+  let fontWaitTimer: ReturnType<typeof setTimeout>;
   let restoreOverflow = '';
   let motionMedia: gsap.MatchMedia | undefined;
+  let fontFallback = false;
   let rebuild = () => {};
   let flushResize = () => {};
   const rulerX = Array.from({ length: 24 }, (_, i) => (i + 1) * 100);
@@ -103,6 +109,7 @@
     lastTrigger?.focus({ preventScroll: true });
   }
   function openMenu() {
+    menuNavigationTarget = null;
     menuOpen = true;
     lockScroll();
     menuDialog.showModal();
@@ -111,15 +118,20 @@
   function closeMenu() {
     menuOpen = false;
     unlockScroll();
-    menuButton?.focus({ preventScroll: true });
+    (menuNavigationTarget ?? menuButton)?.focus({ preventScroll: true });
+    menuNavigationTarget = null;
   }
   function navigate(event: MouseEvent, href: string) {
     event.preventDefault();
-    if (menuDialog.open) menuDialog.close();
-    flushResize();
     const target = document.querySelector<HTMLElement>(href);
+    const fromMenu = menuDialog.open;
+    if (fromMenu) {
+      menuNavigationTarget = target;
+      menuDialog.close();
+    }
+    flushResize();
     target?.scrollIntoView({ behavior: reduced || stopped ? 'instant' : 'smooth', block: 'start' });
-    target?.focus({ preventScroll: true });
+    if (!fromMenu) target?.focus({ preventScroll: true });
     history.replaceState(null, '', href);
   }
   async function copyEmail() {
@@ -182,12 +194,15 @@
     rebuild = () => {
       motionMedia?.revert();
       ready = true;
+      introLinksAvailable = true;
+      sidebarEmailAvailable = reduced || stopped || innerHeight <= 600;
+      sidebarLinksAvailable = true;
       root.classList.add('b-ready');
       root.classList.toggle('b-static', reduced || stopped);
       // Short screens need normal document flow: a pinned viewport must never
       // trap the introduction or its links below the fold.
-      root.classList.toggle('b-flow', innerHeight <= 600);
-      if (reduced || stopped) return;
+      root.classList.toggle('b-flow', fontFallback || innerHeight <= 600);
+      if (fontFallback || reduced || stopped) return;
       motionMedia = gsap.matchMedia();
       motionMedia.add(
         '(min-width: 0px)',
@@ -340,6 +355,12 @@
               { opacity: 1, y: 0, rotation: 0, stagger: 0.08, duration: 0.25 },
               0.58
             );
+            const syncIntroLinks = () => {
+              introLinksAvailable = timeline.progress() < 0.18;
+              sidebarEmailAvailable = timeline.progress() >= 0.95;
+            };
+            timeline.eventCallback('onUpdate', syncIntroLinks);
+            syncIntroLinks();
           }
           for (const element of q('[data-b-reveal]')) {
             gsap.fromTo(
@@ -388,9 +409,13 @@
               }
             }
           );
-          gsap.to(q('.b-sidebar'), {
+          const sidebar = q('.b-sidebar')[0] as HTMLElement;
+          gsap.to(sidebar, {
             opacity: 0,
             pointerEvents: 'none',
+            onUpdate: () => {
+              sidebarLinksAvailable = Number(gsap.getProperty(sidebar, 'opacity')) > 0.05;
+            },
             scrollTrigger: { trigger: '#contact-b', start: 'top 65%', end: 'top 10%', scrub: true }
           });
           const drag = matchMedia('(pointer: fine) and (min-width: 1024px)').matches
@@ -415,9 +440,25 @@
       );
       ScrollTrigger.refresh();
     };
-    document.fonts.ready.then(() => {
-      if (alive) rebuild();
-    });
+    const startAnimated = () => {
+      if (!alive || ready) return;
+      clearTimeout(fontWaitTimer);
+      const copy = root.querySelector<HTMLElement>('.b-intro-copy');
+      fontFallback = !!copy && Number(getComputedStyle(copy).opacity) > 0.95;
+      rebuild();
+    };
+    if (document.fonts.status === 'loaded') startAnimated();
+    else {
+      // A short wait preserves the original scene on normal loads. If fonts
+      // stall, show content in flow for this visit instead of revealing it
+      // and later hiding it again when the scroll scene initializes.
+      fontWaitTimer = setTimeout(() => {
+        if (!alive || ready) return;
+        fontFallback = true;
+        rebuild();
+      }, 180);
+      document.fonts.ready.then(startAnimated);
+    }
     const motionChange = () => {
       reduced = preference.matches;
       rebuild();
@@ -449,6 +490,7 @@
       motionMedia?.revert();
       observer.disconnect();
       clearTimeout(copyTimer);
+      clearTimeout(fontWaitTimer);
       clearTimeout(resizeTimer);
       preference.removeEventListener('change', motionChange);
       window.removeEventListener('scroll', trackScroll);
@@ -462,6 +504,13 @@
 </script>
 
 <svelte:head>
+  <script type="module">
+    window.setTimeout(() => {
+      const portfolio = document.querySelector('.variant-b');
+      if (portfolio && !portfolio.classList.contains('b-ready'))
+        portfolio.classList.add('b-font-fallback');
+    }, 1000);
+  </script>
   <link rel="preload" href={antonFont} as="font" type="font/woff2" crossorigin="anonymous" />
   <link
     rel="preload"
@@ -501,10 +550,21 @@
     <button
       type="button"
       bind:this={menuButton}
+      disabled={!ready}
       onclick={openMenu}
       aria-label="Open navigation menu"><Menu size={24} /></button
     >
   </header>
+
+  <noscript>
+    <nav class="b-nojs-nav" aria-label="Portfolio navigation">
+      <a href="#introduce">Introduce</a>
+      <a href="#about-b">About</a>
+      <a href="#works-b">Works</a>
+      <a href="#principles-b">Principles</a>
+      <a href="#contact-b">Contact</a>
+    </nav>
+  </noscript>
 
   <aside
     class="b-sidebar"
@@ -516,7 +576,7 @@
       <Brush class="b-name-brush" />
     </div>
     <p class="b-sidebar-tag">Product / Design / <span>Fintech</span></p>
-    <div class="b-side-social">
+    <div class="b-side-social" inert={!sidebarLinksAvailable}>
       <a href={linkedin} target="_blank" rel="noopener noreferrer"
         >LinkedIn <ArrowUpRight size={13} /></a
       ><a href={github} target="_blank" rel="noopener noreferrer"
@@ -524,12 +584,12 @@
       >
     </div>
     <div class="b-sidebar-bio">
-      <p>Product Manager at Flot<br />Co-founder and PM at Mocha.</p>
+      <p>Product Manager at Flot<br />Mocha co-founder and product lead.</p>
       <p class="b-locale">
         <span><MapPin size={12} /> Freetown</span><span><Globe size={12} /> Working remotely</span>
       </p>
     </div>
-    <nav class="b-sidebar-nav" aria-label="Primary navigation">
+    <nav class="b-sidebar-nav" aria-label="Primary navigation" inert={!sidebarLinksAvailable}>
       {#each navigation as [num, label, href]}<a
           {href}
           class:b-active={activeSection === href}
@@ -546,7 +606,12 @@
         decoding="async"
       /><span class="b-photo-caption">Paul Bai / 01</span>
     </div>
-    <a class="b-sidebar-email" href={`mailto:${email}`}><span>{email}</span><Mail size={17} /></a>
+    <a
+      class="b-sidebar-email"
+      href={`mailto:${email}`}
+      inert={!sidebarEmailAvailable || !sidebarLinksAvailable}
+      ><span>{email}</span><Mail size={17} /></a
+    >
   </aside>
 
   <main>
@@ -554,10 +619,13 @@
       <div class="b-intro-stage">
         <p class="b-opening-index">Index / Portfolio / 2026</p>
         <p class="b-opening-note"><ArrowDownLeft /> Flot PM. Mocha cofounder.</p>
-        <a href="#about-b" class="b-keep-going" onclick={(e) => navigate(e, '#about-b')}
-          ><ArrowDown /> Keep exploring</a
+        <a
+          href="#about-b"
+          class="b-keep-going"
+          inert={!introLinksAvailable}
+          onclick={(e) => navigate(e, '#about-b')}><ArrowDown /> Keep exploring</a
         >
-        <div class="b-hero-social">
+        <div class="b-hero-social" inert={!introLinksAvailable}>
           <a href={linkedin} target="_blank" rel="noopener noreferrer"
             >LinkedIn <ArrowUpRight size={12} /></a
           ><a href={github} target="_blank" rel="noopener noreferrer"
@@ -571,16 +639,17 @@
             >
           </h2>
           <p>
-            I’m Product Manager at <strong>Flot</strong> and co-founder and Product Manager at
-            <strong>Mocha</strong>. Our team built Mocha from an idea into a WhatsApp-based money
-            product that has processed over $2.5M. I work where customer trust, financial access,
-            and product delivery meet.
+            I’m Product Manager at <strong>Flot</strong>. I co-founded <strong>Mocha</strong> and led
+            its product from idea into use. My work asks how financial services can fit the ways people
+            already move money in Sierra Leone, with clear steps and trust at every handoff.
           </p>
           <div class="b-intro-stats">
-            <div class="b-intro-stat"><strong>21</strong><span>Project spaces</span></div>
+            <div class="b-intro-stat">
+              <strong>$2.5M+</strong><span>Mocha team processed · May 2024–June 2025</span>
+            </div>
             <div class="b-intro-stat"><strong>Flot</strong><span>Product Manager</span></div>
             <div class="b-intro-stat">
-              <strong>Mocha</strong><span>Co-founder and Product Manager</span>
+              <strong>Mocha</strong><span>Co-founder and product lead</span>
             </div>
           </div>
         </div>
@@ -591,19 +660,21 @@
       <div class="b-about-intro" data-b-reveal>
         <h2 id="b-about-title">A little <span class="b-accent">about me.</span></h2>
         <p>
-          I’m Paul Bai Kanu. My path into product spans design, web development, and earlier work on
-          complex engineering and infrastructure projects. Those experiences taught me to ask how an
-          ambitious idea will work for people within real-world constraints.
+          I’m Paul Bai Kanu. Growing up in Sierra Leone taught me how much every penny matters. My
+          path into product spans design, web development, and work on complex engineering and
+          infrastructure projects. That mix pushes me to start with the customer problem and work
+          through the constraints of delivery.
         </p>
         <p>
-          My work now centers on financial access. Mocha lets people add funds with mobile money,
-          bank transfer, or crypto; send USDC through WhatsApp; and cash out to Leones. At Flot, I
-          work across a broader connected finance ecosystem.
+          My work now centers on financial access. I manage product at Flot and previously
+          co-founded Mocha, leading its product from idea into use. Both roles put me close to the
+          practical questions: how someone funds an account, moves value, uses a card, or gets cash
+          again.
         </p>
         <p>
-          In early 2025, a remittance client stayed with an older method despite delays and charges.
-          That is the kind of adoption barrier I examine in my writing on trust, liquidity, and
-          cash-in and cash-out: the experience has to work in the real world, not only on screen.
+          I write about the practical last mile of digital money: liquidity, literacy, and trusted
+          cash-in and cash-out. A fast financial rail only matters when people understand it and can
+          use it in daily life.
         </p>
         <p>
           I still design and build digital services, from focused landing pages and business
@@ -621,16 +692,16 @@
 
     <section id="works-b" class="b-section b-works" tabindex="-1" aria-labelledby="b-works-title">
       <h2 id="b-works-title" data-b-reveal>
-        An archive. <span class="b-accent b-underlined">In progress.<Brush /></span>
+        The work. <span class="b-accent b-underlined">In context.<Brush /></span>
       </h2>
       <ProjectRail paused={reduced || stopped || dialogOpen || menuOpen} onopen={openProject} />
       <div class="b-work-caption">
-        <span class="b-hand">Explore the work <ArrowUpRight size={28} /></span>
+        <span class="b-hand">Browse the archive <ArrowUpRight size={28} /></span>
         <div>
-          <h3>21 <span class="b-accent">project spaces.</span></h3>
+          <h3>2 <span class="b-accent">featured products.</span></h3>
           <p>
-            Flot and Mocha anchor my product work. The archive also includes code projects, website
-            collaborations, and experiments.
+            Flot and Mocha show my product work. The archive holds 21 projects across design, code,
+            and collaboration.
           </p>
         </div>
       </div>
@@ -661,13 +732,14 @@
           <p class="b-kicker">Product Manager · Current role</p>
           <h3>Making everyday money movement easier across one connected platform.</h3>
           <p>
-            Flot connects wallets, payments, cards, and WhatsApp banking with services for
-            businesses and developers. The product challenge is to make those connections useful in
-            everyday money decisions.
+            In Sierra Leone, one money task can cross cash, banks, mobile money, cards, and agents.
+            Flot began with money actions in WhatsApp before expanding into an app that connects
+            wallets and payments with cards, business finance, and developer services.
           </p>
           <p>
-            As Flot’s current Product Manager, I focus on how customer journeys connect across the
-            ecosystem and where the team can make them clearer.
+            As Flot’s Product Manager, I focus on the handoffs between those journeys: what the
+            customer needs to understand next, and how design, engineering, compliance, and business
+            can deliver a coherent experience together.
           </p>
           <a href="https://flotme.ai" target="_blank" rel="noopener noreferrer" class="b-hand"
             >Visit Flot <ArrowUpRight size={24} /></a
@@ -680,7 +752,11 @@
           <p class="b-kicker">Co-founded product / Mocha</p>
           <h3>Money movement.<br /><span class="b-accent">In a conversation.</span></h3>
           <p>{projects[1].summary}</p>
-          <p>Co-founder and Product Manager · Sierra Leone</p>
+          <p>
+            A customer once chose an older remittance method despite its delays and charges. It
+            sharpened my view that a better transaction still has to earn trust and fit people’s
+            habits.
+          </p>
           <button type="button" class="b-hand" onclick={() => openProject(projects[1])}
             >Explore Mocha <ArrowUpRight size={24} /></button
           >
@@ -701,9 +777,10 @@
       </div>
       <a
         class="b-experience-link b-hand"
-        href="https://www.linkedin.com/pulse/your-startup-vitamin-painkiller-paul-bai-kanu-huh8f"
+        href="https://www.linkedin.com/pulse/stablecoins-wont-fail-sierra-leone-because-technology-paul-bai-kanu-gaaxf"
         target="_blank"
-        rel="noopener noreferrer">Read my thinking on adoption <ArrowUpRight size={24} /></a
+        rel="noopener noreferrer"
+        >Read my view on cash access and trust <ArrowUpRight size={24} /></a
       >
     </section>
 
@@ -752,8 +829,8 @@
           />{/each}
       </div>
       <div class="b-contact-copy">
-        <h2 id="b-contact-title"><span class="b-accent">Your next</span> big idea.</h2>
-        <p class="b-hand">Let’s make it real.</p>
+        <h2 id="b-contact-title"><span class="b-accent">Let’s talk</span> product.</h2>
+        <p class="b-hand">Hiring a Product Manager? Let’s connect.</p>
         <button
           type="button"
           class="b-email-copy"
@@ -761,7 +838,7 @@
           aria-label={copied ? 'Copied. Let’s talk!' : `Copy ${email}`}
           >{copied ? 'Copied. Let’s talk!' : email}<Copy size={17} /></button
         ><a class="b-email-send" href={`mailto:${email}`}
-          >Email me about product work <ArrowUpRight size={16} /></a
+          >Email me about a Product Manager role <ArrowUpRight size={16} /></a
         >
         <div class="b-footer-social">
           <a href={github} target="_blank" rel="noopener noreferrer">GitHub</a><a
@@ -818,7 +895,7 @@
           >GitHub <ArrowUpRight size={16} /></a
         >
       </div>
-      <p>Product Manager at Flot<br />Co-founder and PM at Mocha.</p>
+      <p>Product Manager at Flot<br />Mocha co-founder and product lead.</p>
       <p class="b-locale"><MapPin size={12} /> Freetown, Sierra Leone · Working remotely</p>
       <nav aria-label="Mobile navigation">
         {#each navigation as [num, label, href]}<a {href} onclick={(e) => navigate(e, href)}

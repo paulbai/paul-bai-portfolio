@@ -16,7 +16,7 @@ export const projects: Project[] = [
     kind: 'Current work',
     image: '/media/projects/flot.webp',
     summary:
-      'I am Product Manager at Flot, a Sierra Leonean financial ecosystem connecting personal wallets, WhatsApp banking, cards, business finance, and developer payments.',
+      'Flot tackles the fragmented way people move money across cash, banks, mobile money, cards, and agents in Sierra Leone. It began with WhatsApp money actions before expanding into a connected app, cards, and services for businesses and developers. As Product Manager, I focus on clearer handoffs across those journeys.',
     website: { href: 'https://flotme.ai', label: 'flotme.ai' }
   },
   {
@@ -26,7 +26,7 @@ export const projects: Project[] = [
     kind: 'Co-founded product',
     image: '/media/projects/mocha.webp',
     summary:
-      'As co-founder and Product Manager, I helped build Mocha from idea into a WhatsApp-based way to deposit, send USDC, and withdraw to leones. The team has processed over $2.5M through the product.',
+      'Mocha tackled costly, complicated remittances into Sierra Leone through a familiar WhatsApp journey. I co-founded it and led product from idea to a service where people could fund through mobile money, bank transfer, or crypto; send USDC; and cash out in Leones. Our team processed over $2.5M across remittance, cards, US-stock access, and OTC from May 2024 to June 2025.',
     website: { href: 'https://getmocha.io', label: 'getmocha.io' }
   },
   {

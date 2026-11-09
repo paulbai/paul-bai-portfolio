@@ -11,12 +11,10 @@ for (const route of ['index.html']) {
     const about = html.match(/<section\b[^>]*id="about(?:-b)?"[^>]*>([\s\S]*?)<\/section>/)?.[1];
     assert.ok(about, 'About section exists in the rendered HTML');
     const copy = about.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
+    assert.match(copy, /Growing up in Sierra Leone taught me how much every penny matters/);
     assert.match(copy, /My path into product spans design, web development/);
-    assert.match(copy, /Mocha lets people add funds with mobile money/);
-    assert.match(
-      copy,
-      /a remittance client stayed with an older method despite delays and charges/
-    );
+    assert.match(copy, /I manage product at Flot and previously co-founded Mocha/);
+    assert.match(copy, /liquidity, literacy, and trusted cash-in and cash-out/);
     assert.match(
       copy,
       /from focused landing pages and business websites to complex web applications/

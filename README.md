@@ -5,13 +5,14 @@ with a background in product and web design, based in Freetown, Sierra Leone.
 
 **Live website:** [paul-bai-portfolio.vercel.app](https://paul-bai-portfolio.vercel.app)
 
-Paul is currently Product Manager at Flot. He also co-founded Mocha, where he
-works as Product Manager. His portfolio covers financial products, product
+Paul is currently Product Manager at Flot. He also co-founded Mocha and led its
+product work. His portfolio covers financial products, product
 design, and websites from focused landing pages to web applications.
 
 The site includes Paul’s current Product Manager work at Flot and his work as
 co-founder and Product Manager at [Mocha](https://getmocha.io/). The Mocha team
-built the product from an idea, and it has processed over $2.5M. The portfolio
+built the product from an idea and processed over $2.5M across remittance,
+cards, US-stock access, and OTC from May 2024 to June 2025. The portfolio
 also includes his product principles, an editorial portfolio layout, 11 public
 repositories from [`github.com/paulbai`](https://github.com/paulbai), and 8
 public collaborator projects. Cards open an on-site summary. The 11 owned
@@ -51,21 +52,40 @@ The local site runs at the URL printed by Vite (normally `http://localhost:5173`
 ```bash
 npm run check
 npm test
+npm run test:browser
 ```
+
+The browser tests use Playwright and start a local production preview on port
+4174 after `npm test` has built `dist/`. The first run needs the Chromium
+headless browser; `npx playwright install chromium --only-shell` installs it.
+`npm run verify:release` performs the full predeployment gate, including that
+browser installation and tests.
 
 ## Production
 
 The application is built with SvelteKit and exports a static `dist/` folder.
 
-Set `PUBLIC_SITE_URL` to the real portfolio domain before running
-`npm run build`; see `.env.example`. This enables canonical and Open Graph URLs.
-Deploy the resulting `dist/` folder to a static host. No server, secrets, or
-form service is required: contact uses the supplied email address.
+Set `PUBLIC_SITE_URL` to the real HTTPS origin before running
+`npm run verify:release`; see `.env.example`. It must contain no path, query,
+fragment, credentials, or whitespace. For a local release preview, run:
+
+```bash
+PUBLIC_SITE_URL=https://paul-bai-portfolio.vercel.app npm run verify:release
+```
+
+The validation step rejects a missing or malformed value. A plain local
+`npm run build` may omit the value, but its output will not include absolute
+canonical and social URLs and is not release ready. Deploy the resulting
+`dist/` folder to a static host. No server, secrets, or form service is
+required: contact uses the supplied email address.
 
 ### Vercel
 
 `vercel.json` configures a static deployment with `dist` as the output directory.
-The build runs the Svelte checks and all regression tests before deployment.
+The Vercel build runs the URL gate, Svelte checks, and Node tests. Chromium
+browser tests run in the local `verify:release` gate before deployment because
+the Vercel build environment does not provide the native libraries required by
+Playwright's browser.
 Set `PUBLIC_SITE_URL` in the Vercel project to the production URL so canonical
 and social metadata use the correct domain. Pushes to `main` deploy to production
 when the repository is connected to Vercel.

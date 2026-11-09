@@ -9,7 +9,7 @@ test('The static release excludes legacy hosting and database artifacts', async 
   const config = JSON.parse(await readFile(new URL('../vercel.json', import.meta.url), 'utf8'));
   assert.equal(config.framework, null);
   assert.equal(config.outputDirectory, 'dist');
-  assert.equal(config.buildCommand, 'npm run check && npm test');
+  assert.equal(config.buildCommand, 'npm run verify:vercel');
   for (const source of ['/variant-b', '/variant-b/']) {
     assert.ok(
       config.redirects.some(

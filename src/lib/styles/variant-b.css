@@ -1198,42 +1198,66 @@ button.b-hand {
   font-size: 12px;
 }
 
+/* The server-rendered fallback stays navigable when scripts are unavailable. */
+.b-nojs-nav {
+  position: fixed;
+  z-index: 39;
+  inset: calc(75px + env(safe-area-inset-top)) 0 auto;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  padding-inline: max(8px, env(safe-area-inset-left)) max(8px, env(safe-area-inset-right));
+  background: #17171af5;
+  border-bottom: 1px solid var(--b-line);
+}
+.b-nojs-nav a {
+  display: grid;
+  place-items: center;
+  min-height: 44px;
+  padding: 4px;
+  text-align: center;
+  font-size: clamp(10px, 1.5vw, 13px);
+  line-height: 1.2;
+}
+html:has(.variant-b .b-nojs-nav) {
+  scroll-padding-top: calc(130px + env(safe-area-inset-top));
+}
+
 /* Short viewports and reduced motion share a fully scrollable introduction. */
-:is(.b-static, .b-flow) {
+:is(.b-static, .b-flow, .b-font-fallback, .variant-b:has(.b-nojs-nav)) {
   --b-sidebar: 0px;
 }
-:is(.b-static, .b-flow) .b-intro-scene {
+:is(.b-static, .b-flow, .b-font-fallback, .variant-b:has(.b-nojs-nav)) .b-intro-scene {
   height: auto;
 }
-:is(.b-static, .b-flow) .b-intro-stage {
+:is(.b-static, .b-flow, .b-font-fallback, .variant-b:has(.b-nojs-nav)) .b-intro-stage {
   position: relative;
   height: auto;
   min-height: 0;
   padding: var(--b-opening-height) 0 100px;
 }
-:is(.b-static, .b-flow) .b-sidebar {
+:is(.b-static, .b-flow, .b-font-fallback, .variant-b:has(.b-nojs-nav)) .b-sidebar {
   position: absolute;
   width: 100%;
   height: var(--b-opening-height);
 }
-:is(.b-static, .b-flow) .b-sidebar > :not(.b-identity) {
+:is(.b-static, .b-flow, .b-font-fallback, .variant-b:has(.b-nojs-nav)) .b-sidebar > :not(.b-identity) {
   display: none;
 }
-:is(.b-static, .b-flow) .b-identity {
+:is(.b-static, .b-flow, .b-font-fallback, .variant-b:has(.b-nojs-nav)) .b-identity {
   left: 4vw;
   top: calc(var(--b-opening-height) * 0.43);
 }
-.variant-b:is(.b-static, .b-flow) .b-name {
+.variant-b:is(.b-static, .b-flow, .b-font-fallback, :has(.b-nojs-nav)) .b-name {
   font-size: min(24vw, calc(var(--b-opening-height) * 0.28));
 }
-:is(.b-static, .b-flow) .b-intro-copy {
+:is(.b-static, .b-flow, .b-font-fallback, .variant-b:has(.b-nojs-nav)) .b-intro-copy {
   position: relative;
   top: auto;
   left: auto;
   margin-left: 6.1vw;
   opacity: 1;
 }
-:is(.b-static, .b-flow) .b-mobile-header {
+:is(.b-static, .b-flow, .b-font-fallback, .variant-b:has(.b-nojs-nav)) .b-mobile-header {
   display: flex;
   position: fixed;
   inset: 0 0 auto;
@@ -1244,30 +1268,30 @@ button.b-hand {
   padding: 12px 22px;
   background: linear-gradient(#17171af5, #17171a00);
 }
-:is(.b-static, .b-flow) .b-mobile-header > a {
+:is(.b-static, .b-flow, .b-font-fallback, .variant-b:has(.b-nojs-nav)) .b-mobile-header > a {
   font: 400 18px var(--b-poster);
   text-transform: uppercase;
   min-height: 44px;
   display: flex;
   align-items: center;
 }
-:is(.b-static, .b-flow) .b-mobile-header > button {
+:is(.b-static, .b-flow, .b-font-fallback, .variant-b:has(.b-nojs-nav)) .b-mobile-header > button {
   height: 44px;
   width: 44px;
   display: grid;
   place-items: center;
 }
-:is(.b-static, .b-flow) .b-opening-note {
+:is(.b-static, .b-flow, .b-font-fallback, .variant-b:has(.b-nojs-nav)) .b-opening-note {
   top: calc(var(--b-opening-height) * 0.29);
 }
-:is(.b-static, .b-flow) .b-opening-index {
+:is(.b-static, .b-flow, .b-font-fallback, .variant-b:has(.b-nojs-nav)) .b-opening-index {
   top: 90px;
 }
-:is(.b-static, .b-flow) .b-keep-going {
+:is(.b-static, .b-flow, .b-font-fallback, .variant-b:has(.b-nojs-nav)) .b-keep-going {
   top: calc(var(--b-opening-height) - 80px);
   bottom: auto;
 }
-:is(.b-static, .b-flow) .b-hero-social {
+:is(.b-static, .b-flow, .b-font-fallback, .variant-b:has(.b-nojs-nav)) .b-hero-social {
   display: flex;
   position: absolute;
   top: calc(var(--b-opening-height) * 0.76);
@@ -1275,11 +1299,80 @@ button.b-hand {
   gap: 24px;
   font-size: 12px;
 }
-:is(.b-static, .b-flow) .b-hero-social a {
+:is(.b-static, .b-flow, .b-font-fallback, .variant-b:has(.b-nojs-nav)) .b-hero-social a {
   display: flex;
   align-items: center;
   min-height: 44px;
   gap: 5px;
+}
+.variant-b:has(.b-nojs-nav) .b-mobile-header > button {
+  display: none;
+}
+.variant-b:has(.b-nojs-nav) .b-opening-index {
+  top: 145px;
+}
+@media (min-width: 1024px) and (min-height: 601px) {
+  .variant-b:has(.b-nojs-nav) {
+    --b-sidebar: clamp(260px, 22vw, 420px);
+  }
+  .variant-b:has(.b-nojs-nav) .b-nojs-nav,
+  .variant-b:has(.b-nojs-nav) .b-mobile-header {
+    display: none;
+  }
+  .variant-b:has(.b-nojs-nav) .b-sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: var(--b-sidebar);
+    height: auto;
+  }
+  .variant-b:has(.b-nojs-nav) .b-sidebar > :not(.b-identity) {
+    display: block;
+  }
+  .variant-b:has(.b-nojs-nav) .b-sidebar > :is(.b-side-social, .b-sidebar-nav, .b-sidebar-email) {
+    display: flex;
+  }
+  .variant-b:has(.b-nojs-nav) .b-identity {
+    left: 26px;
+    top: 30px;
+  }
+  .variant-b:has(.b-nojs-nav) .b-name {
+    font-size: min(4.2vw, 76px);
+  }
+  .variant-b:has(.b-nojs-nav) .b-intro-stage {
+    height: auto;
+    min-height: 100svh;
+    padding: 0;
+  }
+  .variant-b:has(.b-nojs-nav) .b-intro-copy {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: calc(100% - var(--b-sidebar) - 12.2vw);
+    margin-left: 6.1vw;
+    padding: 170px 0 100px;
+  }
+  .variant-b:has(.b-nojs-nav) .b-intro-copy .b-underlined > svg {
+    bottom: -0.21em;
+    height: 0.18em;
+  }
+  .variant-b:has(.b-nojs-nav) .b-opening-index {
+    top: 57px;
+  }
+  .variant-b:has(.b-nojs-nav) .b-opening-note {
+    top: 56%;
+  }
+  .variant-b:has(.b-nojs-nav) .b-keep-going {
+    top: auto;
+    bottom: 45px;
+  }
+  .variant-b:has(.b-nojs-nav) .b-hero-social {
+    display: none;
+  }
+  html:has(.variant-b .b-nojs-nav) {
+    scroll-padding-top: 30px;
+  }
 }
 .b-static .b-principle:nth-child(1) {
   transform: rotate(-8deg);
@@ -1299,34 +1392,37 @@ button.b-hand {
 
 /* Match the opening before hydration, so late font/JS loading cannot flash the
    overlapping introduction and compact sidebar over the hero. */
-.variant-b:not(.b-ready):not(.b-static) .b-identity {
+.variant-b:not(.b-ready):not(.b-static):not(.b-font-fallback):not(:has(.b-nojs-nav)) .b-identity {
   transform: translate(calc(-74vw - 26px), calc(60.5svh - 30px)) scale(5.615, 3.9305);
 }
-.variant-b:not(.b-ready):not(.b-static) .b-name-brush {
+.variant-b:not(.b-ready):not(.b-static):not(.b-font-fallback):not(:has(.b-nojs-nav)) .b-name-brush {
   transform: translateX(22%) scaleX(0.7);
   transform-origin: 0 50%;
 }
-.variant-b:not(.b-ready):not(.b-static) .b-sidebar-tag {
+.variant-b:not(.b-ready):not(.b-static):not(.b-font-fallback):not(:has(.b-nojs-nav)) .b-sidebar-tag {
   transform: translate(calc(-74vw - 26px), -81px) scale(1.28);
   transform-origin: 0 0;
 }
-.variant-b:not(.b-ready):not(.b-static)
+.variant-b:not(.b-ready):not(.b-static):not(.b-font-fallback):not(:has(.b-nojs-nav))
   :is(
     .b-sidebar-nav,
     .b-sidebar-photo,
     .b-side-social,
     .b-sidebar-bio,
     .b-sidebar-email,
-    .b-photo-caption,
-    .b-intro-copy
+    .b-photo-caption
   ) {
+  opacity: 0;
+  visibility: hidden;
+}
+.variant-b:not(.b-ready):not(.b-static):not(.b-font-fallback):not(:has(.b-nojs-nav)) .b-intro-copy {
   opacity: 0;
 }
 @media (max-width: 1023px) {
-  .variant-b:not(.b-ready):not(.b-static) .b-identity {
+  .variant-b:not(.b-ready):not(.b-static):not(.b-font-fallback):not(:has(.b-nojs-nav)) .b-identity {
     transform: translate(calc(4vw - 20px), calc(46.5svh - 30px)) scale(2.673, 1.8711);
   }
-  .variant-b:not(.b-ready):not(.b-static) .b-name-brush {
+  .variant-b:not(.b-ready):not(.b-static):not(.b-font-fallback):not(:has(.b-nojs-nav)) .b-name-brush {
     transform: translateX(8%) scaleX(0.85);
   }
 }
@@ -1579,7 +1675,7 @@ button.b-hand {
   .b-transition {
     min-height: 50svh;
   }
-  :is(.b-static, .b-flow) .b-intro-copy {
+  :is(.b-static, .b-flow, .b-font-fallback, .variant-b:has(.b-nojs-nav)) .b-intro-copy {
     margin-left: 7%;
   }
   .b-project-dialog-inner {
@@ -1952,14 +2048,14 @@ button.b-hand {
     top: 12px;
     right: 12px;
   }
-  :is(.b-static, .b-flow) .b-intro-stage {
+  :is(.b-static, .b-flow, .b-font-fallback, .variant-b:has(.b-nojs-nav)) .b-intro-stage {
     padding-bottom: 75px;
     min-height: 0;
   }
-  :is(.b-static, .b-flow) .b-intro-copy {
+  :is(.b-static, .b-flow, .b-font-fallback, .variant-b:has(.b-nojs-nav)) .b-intro-copy {
     margin-left: 24px;
   }
-  :is(.b-static, .b-flow) .b-intro-copy h2 {
+  :is(.b-static, .b-flow, .b-font-fallback, .variant-b:has(.b-nojs-nav)) .b-intro-copy h2 {
     font-size: 8.25vw;
   }
 }
@@ -2007,16 +2103,16 @@ button.b-hand {
     top: max(63%, calc(46.5svh + min(20.56vw, 39.5svh) + 44px));
   }
 }
-:is(.b-static, .b-flow) .b-hero-social {
+:is(.b-static, .b-flow, .b-font-fallback, .variant-b:has(.b-nojs-nav)) .b-hero-social {
   top: calc(var(--b-opening-height) * 0.76);
   left: 4vw;
   width: auto;
 }
-:is(.b-static, .b-flow) .b-keep-going {
+:is(.b-static, .b-flow, .b-font-fallback, .variant-b:has(.b-nojs-nav)) .b-keep-going {
   top: calc(var(--b-opening-height) - 80px);
   bottom: auto;
 }
-:is(.b-static, .b-flow) .b-intro-copy {
+:is(.b-static, .b-flow, .b-font-fallback, .variant-b:has(.b-nojs-nav)) .b-intro-copy {
   top: auto;
   left: auto;
 }
@@ -2142,12 +2238,12 @@ button.b-hand {
   }
 }
 @media (max-height: 600px) and (min-width: 480px) {
-  :is(.b-static, .b-flow) .b-hero-social {
+  :is(.b-static, .b-flow, .b-font-fallback, .variant-b:has(.b-nojs-nav)) .b-hero-social {
     left: auto;
     right: 7%;
     top: calc(var(--b-opening-height) - 64px);
   }
-  :is(.b-static, .b-flow) .b-keep-going {
+  :is(.b-static, .b-flow, .b-font-fallback, .variant-b:has(.b-nojs-nav)) .b-keep-going {
     top: calc(var(--b-opening-height) - 64px);
   }
 }
